@@ -1,0 +1,21 @@
+version: "3.9"
+services:
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    depends_on:
+      - mysql
+      - mongo
+  mysql:
+    image: "mysql"
+    restart: "always"
+    ports:
+      - "3306:3306"
+    environment: 
+      MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+  mongo:
+    image: "mongo"
+    restart: "always"
+    ports:
+      - "27017:27017"
